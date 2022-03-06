@@ -1,6 +1,9 @@
 ;;; org-roam-desktop.el --- Consult integration for org-roam  -*- lexical-binding: t; -*-
 
+;;; Commentary:
 ;; Copyright (C) 2022 jgru
+;; based on Grant Rosson's zk-implementation
+
 ;;; Code:
 (require 'org-roam)
 
