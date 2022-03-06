@@ -28,7 +28,6 @@ Sample workflow:
 
 #+begin_src elisp
 (use-package org-roam-desktop
-   :straight nil
    :straight (:host github :repo "jgru/org-roam-desktop")
    :init
    (require 'org-roam-desktop)
