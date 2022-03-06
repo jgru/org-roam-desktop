@@ -2,6 +2,7 @@
 
 ;; Copyright (C) 2022 jgru
 ;;; Code:
+(require 'org-roam)
 
 (defgroup org-roam-desktop nil
   "Desktop interfaces for org-roam."
