@@ -1,5 +1,5 @@
 * =org-roam-desktop= 
-This is a dead simple desktop facility for [[https://github.com/org-roam/org-roam][=org-roam=]]. It is based on
+This is a dead simple desktop facility for [[https://github.com/org-roam/org-roam][org-roam]]. It is based on
 [[https://github.com/localauthor/zk/blob/main/zk-index.el][zk's desktop]] and was modified to work with org-roam. 
 
 Please note that this is totally WIP and developed for my personal
@@ -8,14 +8,20 @@ not want to tinker with it, keep off your hands.
 
 * Overview and usage
 =org-roam-desktop= let's you conveniently add nodes as headlines
-followed by a =#+transclude=-link into a =*Org-Roam-Desktop*-...= of your
-choice. 
+followed by a =#+transclude=-link into an =*Org-Roam-Desktop*-...= of
+your choice.
 
 Sample workflow:
 1) Open a =*Org-Roam-Desktop*-...= via =M-x org-roam-desktop=
-2) Open an =org-roam-node= via =M-x org-roam-node-find= and add the current node at point to a new or existing =*Org-Roam-Desktop*-= of your choosing via =M-x org-roam-desktop-node-add=
-3) Eventually, you want to add another node (not existing in the current buffer) the you run =M-x org-roam-desktop-node-find-and-add=. This let's you select and search for an =org-roam-node= which will be added to the desktop
-4) Open the desktop via =M-x org-roam-desktop-select= (or just by using =M-x switch-to-buffer=) and edit it the buffer
+2) Open an =org-roam-node= via =M-x org-roam-node-find= and add the
+   current node at point to a new or existing =*Org-Roam-Desktop*-= of
+   your choosing via =M-x org-roam-desktop-node-add=
+3) Eventually, you want to add another node (not existing in the
+   current buffer) the you run =M-x
+   org-roam-desktop-node-find-and-add=. This let's you select and
+   search for an =org-roam-node= which will be added to the desktop
+4) Open the desktop via =M-x org-roam-desktop-select= (or just by
+   using =M-x switch-to-buffer=) and edit it the buffer
  
 
 * Preliminary Installation Steps
@@ -34,7 +40,6 @@ Sample workflow:
 #+end_src
 
 * Dependencies
-
 ** Hard dependencies
 =org-roam-desktop= is built on top of [[https://github.com/org-roam/org-roam][=org-roam=]] relies on its
 functionality.
