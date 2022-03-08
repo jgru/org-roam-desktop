@@ -98,23 +98,24 @@ With prefix-argument, raise ORG-ROAM-Desktop in other frame."
       (switch-to-buffer buffer)
       (org-mode))))
 
-(defun org-roam-desktop-node-find-and-add (&optional initial-input filter-fn)
+(defun org-roam-desktop-node-find (&optional initial-input filter-fn)
   "Find and send a node to a desktop."
   (interactive)
   (let ((node (org-roam-node-read initial-input filter-fn)))
-    (if (org-roam-node-file node)
-        (org-roam-desktop-node-add node))))
+    (if node
+        (progn node)
+      (error "Error finding node"))))
 
 (defun org-roam-desktop-node-add (&optional node)
   "Send provided node or node at point to a desktop."
   (interactive)
   (unless org-roam-desktop-directory
     (error "Please set 'org-roam-desktop-directory'"))
-    (let ((buffer)
+    (let* ((buffer)
         (node (if node node
-          (when (not (org-roam-file-p (buffer-file-name)))
-               (org-roam-desktop-node-find-and-add))
-             (org-roam-node-at-point)))
+          (if (org-roam-file-p (buffer-file-name))
+              (org-roam-node-at-point)
+            (org-roam-desktop-node-find-and-add))))
         (link (org-link-make-string
                   (concat "id:" (org-roam-node-id node))
                    (org-roam-node-title node))))
