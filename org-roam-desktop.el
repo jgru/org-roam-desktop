@@ -98,24 +98,26 @@ With prefix-argument, raise ORG-ROAM-Desktop in other frame."
       (switch-to-buffer buffer)
       (org-mode))))
 
-(defun org-roam-desktop-node-find (&optional initial-input filter-fn)
-  "Find and send a node to a desktop."
+
+(defun org-roam-desktop--node-find (&optional initial-input filter-fn)
+  "Find a node and return it.
+INITIAL-INPUT is the initial input for the prompt.
+FILTER-FN is a function to filter out nodes: it takes an `org-roam-node',
+and when nil is returned the node will be filtered out."
   (interactive)
   (let ((node (org-roam-node-read initial-input filter-fn)))
     (if node
         (progn node)
       (error "Error finding node"))))
 
-(defun org-roam-desktop-node-add (&optional node)
-  "Send provided node or node at point to a desktop."
-  (interactive)
-  (unless org-roam-desktop-directory
+(defun org-roam-desktop--node-add-internal (&optional node)
+  "Add given NODE to desktop."
+  (interactive "P")
+    (unless org-roam-desktop-directory
     (error "Please set 'org-roam-desktop-directory'"))
     (let* ((buffer)
-        (node (if node node
-          (if (org-roam-file-p (buffer-file-name))
-              (org-roam-node-at-point)
-            (org-roam-desktop-node-find))))
+        (node (if org-roam-node-p node
+                (error "No org-roam-node provided")))
         (link (org-link-make-string
                   (concat "id:" (org-roam-node-id node))
                    (org-roam-node-title node))))
@@ -136,6 +138,24 @@ With prefix-argument, raise ORG-ROAM-Desktop in other frame."
     (if (string= (buffer-name) "*Org-Roam*")
         (message "Sent to %s - press D to switch" buffer)
       (message "Sent to %s" buffer))))
+
+(defun org-roam-desktop-node-add (arg)
+  "Send node at point or node of your choosing to a desktop.
+If a prefix ARG is set, `org-roam-desktop-node-at-point-add' will
+be called."
+  (interactive "P")
+  (if current-prefix-arg
+      (org-roam-desktop-node-at-point-add)
+    (org-roam-desktop--node-add-internal (org-roam-desktop--node-find))))
+
+(defun org-roam-desktop-node-at-point-add ()
+  "Send node at point to a desktop."
+  (interactive)
+  (let ((node
+         (if (org-roam-file-p (buffer-file-name))
+             (org-roam-node-at-point)
+           (error "No org-roam-node at point"))))
+    (org-roam-desktop--node-add-internal node)))
 
 (provide 'org-roam-desktop)
 ;;; org-roam-desktop.el ends here
