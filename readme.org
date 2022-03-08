@@ -57,12 +57,12 @@ the following commands:
 
 * Dependencies
 ** Hard dependencies
-=org-roam-desktop= is built on top of [[https://github.com/org-roam/org-roam][=org-roam=]] relies on its
+=org-roam-desktop= is built on top of [[https://github.com/org-roam/org-roam][org-roam]] and relies on its
 functionality.
 
 ** Soft dependencies
 =org-roam-desktop= makes use of transcluding =org-roam-nodes=, it is
-therefore advised to install [[https://github.com/nobiot/org-transclusion][=org-transclusion=]] as well.
+therefore advised to install [[https://github.com/nobiot/org-transclusion][org-transclusion]] as well.
 
 * Credits
 - [[https://github.com/localauthor/][localauthor]]'s =zk= for providing the implementation
