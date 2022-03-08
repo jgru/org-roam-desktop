@@ -115,7 +115,7 @@ With prefix-argument, raise ORG-ROAM-Desktop in other frame."
         (node (if node node
           (if (org-roam-file-p (buffer-file-name))
               (org-roam-node-at-point)
-            (org-roam-desktop-node-find-and-add))))
+            (org-roam-desktop-node-find))))
         (link (org-link-make-string
                   (concat "id:" (org-roam-node-id node))
                    (org-roam-node-title node))))
