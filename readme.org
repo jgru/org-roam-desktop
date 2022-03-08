@@ -1,4 +1,4 @@
-* =org-roam-desktop= - An unofficial Extension
+* =org-roam-desktop= - An Unofficial Extension
 This is a dead simple desktop facility for [[https://github.com/org-roam/org-roam][org-roam]]. It is based on
 [[https://github.com/localauthor/zk/blob/main/zk-index.el][zk's desktop]] and was modified to work with org-roam. 
 
