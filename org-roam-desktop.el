@@ -116,7 +116,8 @@ and when nil is returned the node will be filtered out."
     (unless org-roam-desktop-directory
     (error "Please set 'org-roam-desktop-directory'"))
     (let* ((buffer)
-        (node (if org-roam-node-p node
+        (node (if (org-roam-node-p node)
+                  node
                 (error "No org-roam-node provided")))
         (link (org-link-make-string
                   (concat "id:" (org-roam-node-id node))
