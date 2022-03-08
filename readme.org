@@ -7,20 +7,35 @@ use. Both the functionality and the interface will change. If you do
 not want to tinker with it, keep off your hands.
 
 * Overview and usage
+** The Concept
 =org-roam-desktop= let's you conveniently add nodes as headlines
 followed by a =#+transclude=-link into an =*Org-Roam-Desktop*-...= of
-your choice.
+your choice. This is just a buffer stored in a designated directory.
+Its contents will look like this: 
 
-Sample workflow:
-1) Open a =*Org-Roam-Desktop*-...= via =M-x org-roam-desktop=
-2) Open an =org-roam-node= via =M-x org-roam-node-find= and add the
-   current node at point to a new or existing =*Org-Roam-Desktop*-= of
-   your choosing via =M-x org-roam-desktop-node-add=
-3) Eventually, you want to add another node (not existing in the
-   current buffer) the you run =M-x
-   org-roam-desktop-node-find-and-add=. This let's you select and
-   search for an =org-roam-node= which will be added to the desktop
-4) Open the desktop via =M-x org-roam-desktop-select= (or just by
+#+begin_src 
+,* [[id:7aaa1b8e-c776-44ec-8d65-150dea59cd1c][Some node]]
+,#+transclude: [[id:7aaa1b8e-c776-44ec-8d65-150dea59cd1c][Some node]]
+
+,* [[id:7d2fe829-ea12-4589-9d78-0b0c5009f593][Some other node]]
+,#+transclude: [[id:7d2fe829-ea12-4589-9d78-0b0c5009f593][Some other node]]
+#+end_src
+(Commata included for escaping in org.)
+
+** Sample workflow
+In order to pull out some /zettels/ and put them on your desktop, use
+the following commands:
+
+1) Open a =*Org-Roam-Desktop--...= via =M-x org-roam-desktop=
+2) Add a node to a new or existing
+   =*Org-Roam-Desktop--= desktop of your choosing by running =M-x
+   org-roam-desktop-node-add=. This let's you search and an
+   =org-roam-node= which will be added to the desktop.
+3) Eventually, you want to add the current node at point to a desktop.
+   To do so, you can either call the previously mentioned function with
+   prefix argument (=C-u C-c n a= if you are using the keybinding set
+   below) or by running =M-x org-roam-desktop-node-at-point-add=
+4) Afterwards, open the desktop via =M-x org-roam-desktop-select= (or just by
    using =M-x switch-to-buffer=) and edit it the buffer
  
 
@@ -31,6 +46,8 @@ Sample workflow:
    :straight (:host github :repo "jgru/org-roam-desktop")
    :init
    (require 'org-roam-desktop)
+   :custom
+   (org-roam-desktop-basename "*OR-Desk--")
    :config
    (setq org-roam-desktop-directory "/path/to/roam/desktops")
    :bind
