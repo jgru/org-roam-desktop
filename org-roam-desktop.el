@@ -135,7 +135,7 @@ and when nil is returned the node will be filtered out."
          (goto-char (point-max))
           (beginning-of-line)
           (org-insert-heading)
-          (insert link "\n#+transclude: " link)))
+          (insert link "\n#+transclude: " link "\n")))
     (if (string= (buffer-name) "*Org-Roam*")
         (message "Sent to %s - press D to switch" buffer)
       (message "Sent to %s" buffer))))
