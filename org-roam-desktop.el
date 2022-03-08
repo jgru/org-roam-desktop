@@ -17,7 +17,7 @@
   "Directory for saved org-roam-Desktops."
   :type 'directory)
 
-(defcustom org-roam-desktop-basename "*Org-Roam-Desktop:"
+(defcustom org-roam-desktop-basename "*Org-Roam-Desktop--"
   "Basename for org-roam-Desktops.
 The names of all org-roam-Desktops should begin with this string."
   :type 'string)
